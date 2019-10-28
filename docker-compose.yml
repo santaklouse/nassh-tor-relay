@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    image: santaklouse/nassh-tor-relay
+    ports:
+      - '8022:8022'
+    depends_on:
+      - torproxy
+    environment:
+      - "TORPROXY_HOST=torproxy"
+
+  torproxy:
+    container_name: torproxy
+    image: dperson/torproxy
+    ports:
+      - '8118:8118'
+      - '9050:9050
